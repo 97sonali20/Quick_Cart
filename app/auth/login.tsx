@@ -48,17 +48,14 @@ export default function LoginScreen() {
   const validateForm = () => {
     let isValid = true;
 
-    // Reset errors
     setUsernameError('');
     setPasswordError('');
 
-    // Validate username
     if (!username.trim()) {
       setUsernameError('Username is required');
       isValid = false;
     }
 
-    // Validate password
     if (!password.trim()) {
       setPasswordError('Password is required');
       isValid = false;
@@ -75,7 +72,7 @@ export default function LoginScreen() {
     try {
       await dispatch(loginUser({ username, password })).unwrap();
     } catch (error) {
-      // Error is handled by the effect above
+      console.log(error)
     }
   };
 
@@ -118,7 +115,6 @@ export default function LoginScreen() {
               <View style={styles.passwordWrapper}>
                 <TextInput
                   style={[
-                    // styles.input,
                     { color: textColor, borderColor: passwordError ? '#ff4444' : '#ddd', flex: 1 }
                   ]}
                   placeholder="Enter your password"

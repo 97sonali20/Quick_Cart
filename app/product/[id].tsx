@@ -258,6 +258,7 @@ const styles = StyleSheet.create({
     width: width,
     height: width * 0.8,
     resizeMode: 'cover',
+    
   },
   content: {
     padding: 20,

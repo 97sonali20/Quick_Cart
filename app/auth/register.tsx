@@ -1,23 +1,23 @@
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { useThemeColor } from '@/hooks/useThemeColor';
+import { AppDispatch, RootState } from '@/store';
+import { clearError, registerUser } from '@/store/slices/authSlice';
+import { getPasswordStrengthColor, getPasswordStrengthText, validateEmail, validatePassword } from '@/utils/validation';
+import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
   Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import { Link, router } from 'expo-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/store';
-import { registerUser, clearError } from '@/store/slices/authSlice';
-import { validateEmail, validatePassword, getPasswordStrengthText, getPasswordStrengthColor } from '@/utils/validation';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function RegisterScreen() {
   const [name, setName] = useState('');
@@ -54,19 +54,16 @@ export default function RegisterScreen() {
   const validateForm = () => {
     let isValid = true;
     
-    // Reset errors
     setNameError('');
     setEmailError('');
     setPasswordError('');
     setConfirmPasswordError('');
 
-    // Validate name
     if (!name.trim()) {
       setNameError('Name is required');
       isValid = false;
     }
 
-    // Validate email
     if (!email.trim()) {
       setEmailError('Email is required');
       isValid = false;
@@ -75,7 +72,6 @@ export default function RegisterScreen() {
       isValid = false;
     }
 
-    // Validate password
     if (!password.trim()) {
       setPasswordError('Password is required');
       isValid = false;
@@ -84,7 +80,6 @@ export default function RegisterScreen() {
       isValid = false;
     }
 
-    // Validate confirm password
     if (!confirmPassword.trim()) {
       setConfirmPasswordError('Please confirm your password');
       isValid = false;
@@ -104,7 +99,7 @@ export default function RegisterScreen() {
     try {
       await dispatch(registerUser({ name, email, password })).unwrap();
     } catch (error) {
-      // Error is handled by the effect above
+      console.log(error)
     }
   };
 

@@ -237,9 +237,7 @@ export default function OrdersScreen() {
           keyExtractor={(item) => item.id}
           style={styles.ordersList}
           showsVerticalScrollIndicator={false}
-          // refreshControl={
-          //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={tintColor} />
-          // }
+
         />
       )}
     </ThemedView>
