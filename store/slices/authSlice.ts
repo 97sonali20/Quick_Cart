@@ -29,7 +29,7 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async ({ username, password }: { username: string; password: string }, { rejectWithValue }:any) => {
     try {
-      const response = await fetch('https://dummyjson.com/auth/login', {
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -38,8 +38,10 @@ export const loginUser = createAsyncThunk(
           expiresInMins: 30,
         })
       });
+      console.log("🚀 ~ response:", response)
 
       const data = await response.json();
+      console.log("🚀 ~ data:", data)
 
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
@@ -73,7 +75,7 @@ export const registerUser = createAsyncThunk(
           firstName, 
           lastName, 
           gender: 'male', 
-          image: 'https://dummyjson.com/icon/default/128' 
+          image: `${process.env.EXPO_PUBLIC_API_BASE_URL}/icon/default/128` 
         },
         token: 'mock-jwt-token-' + Date.now(),
       };

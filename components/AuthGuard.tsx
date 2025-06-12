@@ -1,7 +1,7 @@
+import { RootState } from '@/store';
+import { router } from 'expo-router';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { router } from 'expo-router';
-import { RootState } from '@/store';
 
 interface AuthGuardProps {
   children: React.ReactNode;

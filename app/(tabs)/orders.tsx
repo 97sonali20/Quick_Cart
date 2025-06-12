@@ -5,14 +5,13 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { AppDispatch, RootState } from '@/store';
 import { fetchOrders, Order } from '@/store/slices/orderSlice';
 import { Image } from 'expo-image';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
-  RefreshControl,
   StyleSheet,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,16 +21,13 @@ export default function OrdersScreen() {
   const { user } = useSelector((state: RootState) => state.auth);
   const [refreshing, setRefreshing] = useState(false);
   const [expandedOrders, setExpandedOrders] = useState<Set<string>>(new Set());
-
-  const backgroundColor = useThemeColor({}, 'background');
-  const textColor = useThemeColor({}, 'text');
   const tintColor = useThemeColor({}, 'tint');
 
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchOrders(user?.id));
-    }
-  }, [dispatch, user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     dispatch(fetchOrders(user?.id));
+  //   }
+  // }, [dispatch, user]);
 
   const onRefresh = async () => {
     if (user) {
@@ -241,9 +237,9 @@ export default function OrdersScreen() {
           keyExtractor={(item) => item.id}
           style={styles.ordersList}
           showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={tintColor} />
-          }
+          // refreshControl={
+          //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={tintColor} />
+          // }
         />
       )}
     </ThemedView>

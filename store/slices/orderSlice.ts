@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CartItem } from './cartSlice';
 
 export interface Order {
@@ -18,7 +18,6 @@ interface OrderState {
   isLoading: boolean;
   error: string | null;
 }
-
 const initialState: OrderState = {
   orders: [],
   selectedOrder: null,

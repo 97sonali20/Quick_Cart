@@ -28,7 +28,6 @@ export default function ProductsScreen() {
   const { user } = useSelector((state: RootState) => state.auth);
   const [refreshing, setRefreshing] = useState(false);
 
-  const backgroundColor = useThemeColor({}, 'background');
   const textColor = useThemeColor({}, 'text');
   const tintColor = useThemeColor({}, 'tint');
 

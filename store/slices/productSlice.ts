@@ -37,7 +37,7 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://dummyjson.com/products');
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_BASE_URL}/products`);
       const data = await response.json();
 
       if (!response.ok) {

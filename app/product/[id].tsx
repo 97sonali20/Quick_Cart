@@ -31,8 +31,6 @@ export default function ProductDetailScreen() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const [quantity, setQuantity] = useState(1);
 
-  const backgroundColor = useThemeColor({}, 'background');
-  const textColor = useThemeColor({}, 'text');
   const tintColor = useThemeColor({}, 'tint');
 
   useEffect(() => {
